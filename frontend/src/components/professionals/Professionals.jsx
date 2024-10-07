@@ -42,7 +42,6 @@ const Professionals = () => {
       <h1>Available Professionals</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div>
-        {/* Add a button to navigate to the ProfessionalForm */}
         <button style={styles.button} onClick={goToProfessionalForm}>
           Enter Your Professional Details
         </button>
