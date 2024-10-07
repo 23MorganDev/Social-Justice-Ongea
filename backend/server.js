@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Import your routes
+
 const userRoutes = require('./routes/userSubmissionRoute'); 
 const professionalRoutes = require('./routes/professionalListRoute'); 
 
@@ -18,7 +18,7 @@ const professionalRoutes = require('./routes/professionalListRoute');
 app.use('/backend', userRoutes);
 app.use('/backend', professionalRoutes);
 
-// Access MongoDB URL and Port from environment variables
+// MongoDB URL and Port from environment variables
 const mongoDBUrl = process.env.MONGO_URL;
 const port = process.env.PORT || 5000;
 
@@ -30,12 +30,12 @@ if (!mongoDBUrl) {
 
 // Connect to MongoDB
 mongoose.connect(mongoDBUrl, {
-  useUnifiedTopology: true, // Enable the new Unified Topology
-  useNewUrlParser: true, // Use the new URL parser
+  useUnifiedTopology: true, 
+  useNewUrlParser: true, 
   writeConcern: {
-    w: 'majority', // Default write concern
-    j: true, // Default to journaling
-    wtimeout: 1000 // Timeout for write concern
+    w: 'majority', 
+    j: true, 
+    wtimeout: 1000 
   }
 })
   .then(() => {
@@ -55,7 +55,7 @@ process.on('SIGINT', async () => {
   process.exit(0);
 });
 
-// Error handling middleware (optional but recommended)
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
